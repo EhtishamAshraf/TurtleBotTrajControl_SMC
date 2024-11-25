@@ -100,17 +100,6 @@ The figure below illustrates the circular trajectory followed by the robot durin
 
 #### Circular Trajectory Equations
 For the robot to follow a circular trajectory, the desired position along the \(x\)- and \(y\)-axes is given by the following parametric equations:
-- $x_{\text{des\_pos}} = \text{radius} \cdot \cos(\text{angular\_velocity} \cdot t)$
-- $y_{\text{des\_pos}} = \text{radius} \cdot \sin(\text{angular\_velocity} \cdot t)$
 
-Where:
-- **radius**: The radius of the circular path the robot will follow.
-- **angular\_velocity**: The rate of rotation, controlling how fast the robot moves along the circle.
-- **t**: Time variable.
+$x_{\text{des\_pos}} = \text{radius} \cdot \cos(\text{angular\_velocity} \cdot t)$
 
-The velocity components along the $x$- and $y$-axes are given by the derivatives of the position equations:
-
-- $v_x = -\text{radius} \cdot \text{angular\_velocity} \cdot \sin(\text{angular\_velocity} \cdot t)$
-- $v_y = \text{radius} \cdot \text{angular\_velocity} \cdot \cos(\text{angular\_velocity} \cdot t)$
-
-These equations describe the robot's linear velocities along the $x$- and $y$-axes as it moves along a circular path. The angular velocity determines how quickly the robot travels along the trajectory.
