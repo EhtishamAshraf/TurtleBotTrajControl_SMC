@@ -91,8 +91,39 @@ Run the following commands on a new terminal:
   ```
 * Remember to run the above commands inside the workspace
 
-# Comparison matlab
+# MATLAB-Based Comparison of Controllers
 
+As part of this project, a detailed performance comparison was conducted between the two implemented controllers: **FBTC (Flatness-Based Trajectory Control)** and **FBSMC (Flatness-Based Sliding Mode Control)**. The analysis was carried out using MATLAB to evaluate key performance metrics based on trajectory tracking accuracy, robustness, and response to disturbances.
+
+### Performance Metrics Evaluated
+1. Tracking Accuracy:
+   - The deviation of the actual robot trajectory from the reference 8-shaped trajectory was computed for both controllers.
+   - The plots in MATLAB is created using the logged data from hardware
+
+2. Robustness to Disturbances:
+   - The controllers were tested under external disturbances.
+   - FBSMC showed better disturbance rejection due to its inherent robustness from sliding mode control.
+
+
+### Key Observations
+- **FBTC**:
+  - Provided smooth and precise tracking under nominal conditions.
+  - Less effective in the presence of external disturbances.
+
+- **FBSMC**:
+  - Demonstrated strong robustness to disturbances, maintaining trajectory tracking even under adverse conditions.
+  - Introduced higher control effort and slight chattering due to sliding mode behavior.
+
+### MATLAB Visualization
+The following plots were generated using MATLAB for both controllers:
+1. Trajectory Tracking:
+   - Overlay of the reference trajectory and the actual trajectory for FBTC and FBSMC.
+2. Control Inputs:
+   - Visualization of linear and angular velocities applied by the controllers.
+3. Comparison of $\theta$ (Heading Angle):
+   - Comparison of the robot's heading angle ($\theta$) over time using both controllers
+
+These results showcase the trade-offs between the two controllers and provide insights into selecting the appropriate control method based on application requirements.
 
 # Hardware Testing
 Before transitioning to real hardware testing with the TurtleBot, ensure that all necessary setup steps are completed. This section provides an overview of key configurations and usage instructions.
