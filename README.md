@@ -84,22 +84,118 @@ The table below displays some of the logged data obtained from the real Turtlebo
 
 
 # Running the Simulation
-To run the simulation, there are two options: A. In order to do the mapping using SLAM, launch the slam_lane_tracking launch file. B. In order to do the navigation, launch the navigation launch file. Navigate inside the workspace and then, use either of the following command:
+Run the following commands on a new terminal:
+  ```bash
+  source devel/setup.bash
+  roslaunch trajectory_control_pkg trajectory_following.launch
+  ```
+* Remember to run the above commands inside the workspace
 
 # Comparison matlab
 
-# Hardware
 
-Here's an improved version of your paragraph:
+# Hardware Testing
+Before transitioning to real hardware testing with the TurtleBot, ensure that all necessary setup steps are completed. This section provides an overview of key configurations and usage instructions.
+
+1.  Turn on the Turtlebot3.
+2.  Connect your laptop and TurtleBot3 to the same Wi-Fi network.
+    * Verify the TurtleBot's IP address via SSH
+    * If you would like to use a new wifi which hasn't been configured in turtlebot3 so far then write the WiFi name and password in the command
+      
+3.  ROS Network Setup:      
+  A. Open the `.bashrc` File:
+   - Use the `nano` editor to open the `.bashrc` file on both the TurtleBot and your laptop:
+     ```bash
+     nano ~/.bashrc
+     ```
+
+  B. Update the ROS Environment Variables:
+   - Add the following lines to the `.bashrc` file **on the TurtleBot**:
+     ```bash
+     export ROS_MASTER_URI=http://<pc-ip>:11311
+     export ROS_HOSTNAME=<turtlebot-ip>
+     ```
+   - Add the following lines to the `.bashrc` file **on the laptop**:
+     ```bash
+     export ROS_MASTER_URI=http://<pc-ip>:11311
+     export ROS_HOSTNAME=<pc-ip>
+     ```
+
+   Replace the placeholders:
+   - `<pc-ip>`: The IP address of your laptop.
+   - `<turtlebot-ip>`: The IP address of your TurtleBot.
+
+  C. Save and Exit:
+   - Press `CTRL+O` to save the changes and `CTRL+X` to exit the editor.
+
+  D. Source the Updated `.bashrc` File:
+   - Run the following command to apply the changes:
+     ```bash
+     source ~/.bashrc
+     ```
+## Running ROS on TurtleBot3 and Laptop
+
+1. Run `roscore` on the Laptop (ROS Master):
+   - On your laptop, start the ROS core:
+     ```bash
+     roscore
+     ```
+
+2. SSH into the TurtleBot:
+   - From your laptop, SSH into the TurtleBot:
+     ```bash
+     ssh ubuntu@<turtlebot-ip>
+     ```
+   - Replace `<turtlebot-ip>` with the TurtleBot's IP address and enter the password when prompted.
+
+3. Launch TurtleBot Bringup:
+   - On the TurtleBot, launch the bringup file to initialize the robot:
+     ```bash
+     roslaunch turtlebot3_bringup turtlebot3_robot.launch
+     ```
+
+4. Test Communication:
+   - Verify the TurtleBot is communicating with your laptop:
+     ```bash
+     rostopic list
+     ```
 
 ---
 
-### Check Robot Connectivity and Movement
+#### Checking TurtleBot Movement
+
+Once the above steps are completed, you can test your TurtleBot's hardware functionality:
+
+1. Test Using Teleop:
+   - On your laptop, run the teleoperation node to control the TurtleBot manually:
+     ```bash
+     roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+     ```
+
+2. Hardware Testing:
+   - Run your trajectory nodes or the test scripts provided in the repository for straight-line or circular movement to ensure proper functioning of the TurtleBot.
+
+After following these steps, the TurtleBot should be fully configured and operational in the real-world environment!
+
+
+# Check Robot Movement
 The `trajectory_control_pkg` also includes three essential nodes to verify the robot's proper connection and functionality. These nodes allow you to test straight-line movement, circular movement, and adjust the robot's heading angle. These features help ensure the robot is correctly connected and responding as expected before running more complex control algorithms.
+
 The figure below illustrates the circular trajectory followed by the robot during its movement:
 
-#### Circular Trajectory Equations
-For the robot to follow a circular trajectory, the desired position along the \(x\)- and \(y\)-axes is given by the following parametric equations:
+#### Parametric Equations for Circular Trajectory
+For the robot to follow a circular trajectory, the desired position along the $x$- and $y$-axes is given by the following parametric equations:
 
-$x_{\text{des\_pos}} = \text{radius} \cdot \cos(\text{angular\_velocity} \cdot t)$
+- ${\text{XdesPos}} = \text{radius} \cdot \cos(\text{omega} \cdot t)$  
+- ${\text{YdesPos}} = \text{radius} \cdot \sin(\text{omega} \cdot t)$  
+
+The velocity components along the $x$- and $y$-axes are calculated as:
+
+- $Vx = -\text{radius} \cdot \text{omega} \cdot \sin(\text{omega} \cdot t)$  
+- $Vy = \text{radius} \cdot \text{omega} \cdot \cos(\text{omega} \cdot t)$  
+
+##### Explanation:
+- Radius: Determines the size of the circular path.
+- Angular Velocity: Controls how quickly the robot moves along the circular trajectory.
+- $time (t)$: Represents the time variable.
 
