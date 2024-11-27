@@ -112,7 +112,7 @@ As part of this project, a detailed performance comparison was conducted between
 
 - **FBSMC**:
   - Demonstrated strong robustness to disturbances, maintaining trajectory tracking even under adverse conditions.
-  - Introduced higher control effort and slight chattering due to sliding mode behavior.
+  - Introduced chattering due to sliding mode behavior.
 
 ### MATLAB Visualization
 The following plots were generated using MATLAB for both controllers:
@@ -230,3 +230,5 @@ The velocity components along the $x$- and $y$-axes are calculated as:
 - Angular Velocity: Controls how quickly the robot moves along the circular trajectory.
 - $time (t)$: Represents the time variable.
 
+
+# Clone the repository
