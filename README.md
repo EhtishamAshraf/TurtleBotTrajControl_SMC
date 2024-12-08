@@ -125,6 +125,15 @@ The following plots were generated using MATLAB for both controllers:
 3. Comparison of $\theta$ (Heading Angle):
    - Comparison of the robot's heading angle ($\theta$) over time using both controllers
 
+#### Quantitative Comparison between FBTC and FBSMC
+
+| **Metric**                   | **FBTC** | **FBSMC** |
+|------------------------------|----------|-----------|
+| **IAE**                      | 8.2070   | 6.0114    |
+| **RMSE**                     | 0.2855   | 0.2228    |
+| **Average Error (avgp)**     | 0.0118   | 0.0144    |
+
+
 These results showcase the trade-offs between the two controllers and provide insights into selecting the appropriate control method based on application requirements.
 
 # Hardware Testing
@@ -133,7 +142,8 @@ Before transitioning to real hardware testing with the TurtleBot, ensure that al
 1.  Turn on the Turtlebot3.
 2.  Connect your laptop and TurtleBot3 to the same Wi-Fi network.
     * Verify the TurtleBot's IP address via SSH
-    * If you would like to use a new wifi which hasn't been configured in turtlebot3 so far then write the WiFi name and password in the command
+    * If you would like to use a new wifi which hasn't been configured in turtlebot3 so far then follow the following steps:
+      1.  Open the following file and add the new wifi and password: `sudo nano -ET4 /etc/netplan/50-cloud-init.yaml`
       
 3.  ROS Network Setup:      
   A. Open the `.bashrc` File:
@@ -242,3 +252,37 @@ The velocity components along the $x$- and $y$-axes are calculated as:
 
 
 # Clone the repository
+Create a folder in your laptop and run the following commands
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install git
+```
+```bash
+git clone https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC.git
+```
+```bash
+cd TrajectoryFollowing_ws
+```
+Run the below commands in root folder of the workspace
+```bash
+catkin_make 
+```
+```bash
+source devel/setup.bash 
+```
+Navigate to the src folder inside the package and make the Python files executable by running the following command:
+```bash
+chmod +x *.py
+```
+There are multiple Python scripts located in the src folder:
+1. This script is responsible for tracking the lane without saving the robot's pose data.
+```bash
+FBTC_8_shape.py
+```
+2. This script tracks the lane while simultaneously saving the robot's pose data.
+```bash
+FBSMC_8_shape.py
+```
+
