@@ -277,11 +277,11 @@ Navigate to the src folder inside the package and make the Python files executab
 chmod +x *.py
 ```
 There are multiple Python scripts located in the src folder:
-1. This script is responsible for tracking the lane without saving the robot's pose data.
+1. This script is responsible for trajectory tracking with FBTC while simultaneously saving the robot's pose data.
 ```bash
 FBTC_8_shape.py
 ```
-2. This script tracks the lane while simultaneously saving the robot's pose data.
+2. This script is responsible for trajectory tracking with FBSMC while simultaneously saving the robot's pose data.
 ```bash
 FBSMC_8_shape.py
 ```
