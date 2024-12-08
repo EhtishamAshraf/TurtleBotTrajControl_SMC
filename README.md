@@ -3,6 +3,7 @@ This repository contains a ROS-based implementation for comparing Flatness-Based
 
 ### Features
 - **ROS Package**: `trajectory_control_pkg`
+- **Simulation and Hardware**: The repo provides the code which works in Gazebo Simulation as well as Real world
 - **Control Algorithms**:
   - **FBTC**: A control method utilizing differential flatness for trajectory planning and tracking.
   - **FBSMC**: A robust control approach combining sliding mode control with flatness for enhanced disturbance rejection.
@@ -37,7 +38,7 @@ Results are visualized as plots, showing the reference trajectory, the robot's a
 ### Mathematical Formulation of the Desired Trajectory
 The 8-shaped trajectory is generated using parametric equations, defining the desired position, velocity, and acceleration at any given time \( t \). These values are used for accurate trajectory tracking by the controllers.
 
-### Target Trajectory
+#### Target Trajectory
 The desired position of the robot along the $x$- and $y$-axes is defined as:
 - $x_{\text{target}} = A \cdot \sin(\omega \cdot t)$
 - $y_{\text{target}} = B \cdot \sin(2 \cdot \omega \cdot t)$
@@ -48,27 +49,28 @@ The desired position of the robot along the $x$- and $y$-axes is defined as:
 - $\omega$: Angular velocity that controls the speed of traversal.
 - $t$: Time variable.
 
-### First Derivative (Velocity)
+#### First Derivative (Velocity)
 The velocity components along the $x$- and $y$-axes are given by:
 - $\dot{x}_{\text{target}} = A \cdot \omega \cdot \cos(\omega \cdot t)$
 - $\dot{y}_{\text{target}} = 2 \cdot B \cdot \omega \cdot \cos(2 \cdot \omega \cdot t)$
 
 These represent the desired linear velocities of the robot.
 
-### Second Derivative (Acceleration)
+#### Second Derivative (Acceleration)
 The acceleration components for the trajectory are derived as:
 - $\ddot{x}_{\text{target}} = -A \cdot \omega^2 \cdot \sin(\omega \cdot t)$
 - $\ddot{y}_{\text{target}} = -4 \cdot B \cdot \omega^2 \cdot \sin(2 \cdot \omega \cdot t)$
 
 These values are used to refine control inputs and ensure smooth motion tracking.
 
-### Purpose
+##### Purpose
 These equations are implemented in the trajectory tracking code, allowing the controllers (e.g., FBTC and FBSMC) to calculate the necessary control inputs for precise 8-shaped trajectory following by the TurtleBot. The dynamic computation of motion parameters ensures accuracy and robustness during real-time execution.
 
 ## Flatness-Based Trajectory Controller (FBTC)
+FBTC is a control approach that leverages the differential flatness property of dynamic systems. In FBTC, the system’s states and inputs are expressed in terms of flat outputs and their derivatives. This method allows for the generation of feasible trajectories and simplifies the design of control laws, as trajectory planning and tracking can be decoupled. FBTC is particularly effective for systems like mobile robots, where precise trajectory tracking, such as following an 8-shaped path, is required.
 
 ## Flatness-Based Sliding Mode Controller (FBSMC)
-
+FBSMC combines the principles of flatness-based control with sliding mode control (SMC) to achieve robust trajectory tracking. While flatness-based control simplifies trajectory planning, sliding mode control enhances robustness by handling uncertainties and disturbances. In FBSMC, a sliding surface is defined based on the flat outputs, ensuring that the system states converge to the desired trajectory even in the presence of external disturbances or model uncertainties. This approach is well-suited for applications requiring both precision and robustness, such as mobile robots navigating complex paths.
 
 # Robot's Pose data
 While the robot is following the 8 shape trajectory, its position and orientation data are continuously recorded in a .csv file. This stored data is later utilized to do the comparison of FBTC and FBSMC.
@@ -98,7 +100,7 @@ As part of this project, a detailed performance comparison was conducted between
 ### Performance Metrics Evaluated
 1. Tracking Accuracy:
    - The deviation of the actual robot trajectory from the reference 8-shaped trajectory was computed for both controllers.
-   - The plots in MATLAB is created using the logged data from hardware
+   - The plots in MATLAB are created using the logged data from hardware.
 
 2. Robustness to Disturbances:
    - The controllers were tested under external disturbances.
@@ -200,7 +202,7 @@ Once the above steps are completed, you can test your TurtleBot's hardware funct
 1. Test Using Teleop:
    - On your laptop, run the teleoperation node to control the TurtleBot manually:
      ```bash
-     roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+     rosrun turtlebot3_teleop turtlebot3_teleop_key.launch
      ```
 
 2. Hardware Testing:
@@ -208,6 +210,14 @@ Once the above steps are completed, you can test your TurtleBot's hardware funct
 
 After following these steps, the TurtleBot should be fully configured and operational in the real-world environment!
 
+# Running the Hardware
+After following the steps 1 - 3 of the section *Running ROS on TurtleBot3 and Laptop*, run the following command (on a new terminal) to run FBTC and FBSMC respectively.
+  ```bash
+  rosrun trajectory_control_pkg FBTC_8_shape.py
+  ```
+  ```bash
+  rosrun trajectory_control_pkg FBSMC_8_shape.py
+  ```
 
 # Check Robot Movement
 The `trajectory_control_pkg` also includes three essential nodes to verify the robot's proper connection and functionality. These nodes allow you to test straight-line movement, circular movement, and adjust the robot's heading angle. These features help ensure the robot is correctly connected and responding as expected before running more complex control algorithms.
