@@ -14,15 +14,19 @@ This repository contains a ROS-based implementation for comparing Flatness-Based
   - Pose data is saved to an Excel file for further evaluation.
   - Visual comparisons are provided to illustrate the reference trajectory versus the actual trajectory for both FBTC and FBSMC.
 
+![Turtlebot3](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/7057946c40d2ec66b5d0790165a0b60bdfc86f61/2-Hardware_Data/Images/Robot_1.png)
+
 ## Demo Videos
 ### FBTC
 You can watch the demo video of Trajectory following with FBTC by clicking on the below image
-
+[![Watch the video](https://github.com/EhtishamAshraf/TB3_slam_with_virtual_obstacles/blob/2adfd5ad148a105782329a14557024fdacdf6fbb/src/slam_lane_tracking_pkg/Image/6-Navigation.png)](https://youtu.be/Ury2mBSe-fI)
 ### FBSMC
 You can watch the demo video of Trajectory following with FBSMC by clicking on the below image
+[![Watch the video](https://github.com/EhtishamAshraf/TB3_slam_with_virtual_obstacles/blob/2adfd5ad148a105782329a14557024fdacdf6fbb/src/slam_lane_tracking_pkg/Image/6-Navigation.png)](https://youtu.be/VayJJ_5sFE0)
 
 ## Gazebo World
 For this project, empty Gazebo world is used as shown below
+![Turtlebot3](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/7218680308a7305bf3b7cf842722acf0856db109/2-Hardware_Data/Images/Gazebo_world.png)
 
 ### Note
 Details about cloning the repository are given at the end of this readme file
@@ -137,6 +141,8 @@ The following plots were generated using MATLAB for both controllers:
 These results showcase the trade-offs between the two controllers and provide insights into selecting the appropriate control method based on application requirements.
 
 # Hardware Testing
+![Setup](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/7218680308a7305bf3b7cf842722acf0856db109/2-Hardware_Data/Images/Experimental%20Setup.jpg)
+
 Before transitioning to real hardware testing with the TurtleBot, ensure that all necessary setup steps are completed. This section provides an overview of key configurations and usage instructions.
 
 1.  Turn on the Turtlebot3.
