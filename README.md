@@ -244,13 +244,11 @@ After following the steps 1 - 3 of the section *Running ROS on TurtleBot3 and La
 Below figure shows output of the FBTC based on real data
 ![FBTC](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/2-Hardware_Data/Images/Ehtisham_FBTC.png)
 
-Below figure shows output of the FBSMC based on real data
-![FBSMC](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/d5e8dd46ec2fcb0efdae0e5a85568e5160ca57ba/2-Hardware_Data/Images/Ehtisham_FBSMC.png)
-
-
   ```bash
   rosrun trajectory_control_pkg FBSMC_8_shape.py
   ```
+Below figure shows output of the FBSMC based on real data
+![FBSMC](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/d5e8dd46ec2fcb0efdae0e5a85568e5160ca57ba/2-Hardware_Data/Images/Ehtisham_FBSMC.png)
 
 # Check Robot Movement
 The `trajectory_control_pkg` also includes three essential nodes to verify the robot's proper connection and functionality. These nodes allow you to test straight-line movement, circular movement, and adjust the robot's heading angle. These features help ensure the robot is correctly connected and responding as expected before running more complex control algorithms.
@@ -285,8 +283,9 @@ sudo apt-get install git
 ```bash
 git clone https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC.git
 ```
+Navigate to the workspace
 ```bash
-cd TrajectoryFollowing_ws
+rajectoryFollowing_ws
 ```
 Run the below commands in root folder of the workspace
 ```bash
