@@ -14,15 +14,13 @@ This repository contains a ROS-based implementation for comparing Flatness-Based
   - Pose data is saved to an Excel file for further evaluation.
   - Visual comparisons are provided to illustrate the reference trajectory versus the actual trajectory for both FBTC and FBSMC.
 
-![Turtlebot3](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/7057946c40d2ec66b5d0790165a0b60bdfc86f61/2-Hardware_Data/Images/Robot_1.png)
-
 ## Demo Videos
 ### FBTC
 You can watch the demo video of Trajectory following with FBTC by clicking on the below image
-[![Watch the video](https://github.com/EhtishamAshraf/TB3_slam_with_virtual_obstacles/blob/2adfd5ad148a105782329a14557024fdacdf6fbb/src/slam_lane_tracking_pkg/Image/6-Navigation.png)](https://youtu.be/Ury2mBSe-fI)
+[![Watch the video](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/7057946c40d2ec66b5d0790165a0b60bdfc86f61/2-Hardware_Data/Images/Robot_1.png)](https://youtu.be/Ury2mBSe-fI)
 ### FBSMC
 You can watch the demo video of Trajectory following with FBSMC by clicking on the below image
-[![Watch the video](https://github.com/EhtishamAshraf/TB3_slam_with_virtual_obstacles/blob/2adfd5ad148a105782329a14557024fdacdf6fbb/src/slam_lane_tracking_pkg/Image/6-Navigation.png)](https://youtu.be/VayJJ_5sFE0)
+[![Watch the video](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/2-Hardware_Data/Images/infinity_shape_robot.png)](https://youtu.be/VayJJ_5sFE0)
 
 ## Gazebo World
 For this project, empty Gazebo world is used as shown below
@@ -124,10 +122,22 @@ As part of this project, a detailed performance comparison was conducted between
 The following plots were generated using MATLAB for both controllers:
 1. Trajectory Tracking:
    - Overlay of the reference trajectory and the actual trajectory for FBTC and FBSMC.
+
+![trajectory_tracking](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/4-MATLAB/x_y.jpg)
+     
 2. Control Inputs:
    - Visualization of linear and angular velocities applied by the controllers.
+     
+A. Linear Velocity of the two conrtollers:
+![LINEAR VEL](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/4-MATLAB/linear_vel.jpg)
+
+B. Angular Velocity of the two conrtollers:
+![ANGULAR VEL](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/4-MATLAB/angular_vel.jpg)
+
 3. Comparison of $\theta$ (Heading Angle):
-   - Comparison of the robot's heading angle ($\theta$) over time using both controllers
+   - Comparison of the robot's heading angle ($\theta$) over time using both controllers]
+
+![theta](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/4-MATLAB/theta.jpg)
 
 #### Quantitative Comparison between FBTC and FBSMC
 
@@ -231,6 +241,11 @@ After following the steps 1 - 3 of the section *Running ROS on TurtleBot3 and La
   ```bash
   rosrun trajectory_control_pkg FBTC_8_shape.py
   ```
+Below figure shows output of the FBTC based on real data
+![FBTC]([https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/2-Hardware_Data/Images/Ehtisham_FBTC.png])
+
+Below figure shows output of the FBSMC based on real data
+![FBSMC]([https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/2-Hardware_Data/Images/Ehtisham_FBSMC.png])
   ```bash
   rosrun trajectory_control_pkg FBSMC_8_shape.py
   ```
