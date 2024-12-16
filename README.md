@@ -242,10 +242,12 @@ After following the steps 1 - 3 of the section *Running ROS on TurtleBot3 and La
   rosrun trajectory_control_pkg FBTC_8_shape.py
   ```
 Below figure shows output of the FBTC based on real data
-![FBTC]([https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/2-Hardware_Data/Images/Ehtisham_FBTC.png])
+![FBTC](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/2-Hardware_Data/Images/Ehtisham_FBTC.png)
 
 Below figure shows output of the FBSMC based on real data
-![FBSMC]([https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/a9006056526a3ad9e4868a651a5a7e84aabb1087/2-Hardware_Data/Images/Ehtisham_FBSMC.png])
+![FBSMC](https://github.com/EhtishamAshraf/TurtleBotTrajControl_SMC/blob/d5e8dd46ec2fcb0efdae0e5a85568e5160ca57ba/2-Hardware_Data/Images/Ehtisham_FBSMC.png)
+
+
   ```bash
   rosrun trajectory_control_pkg FBSMC_8_shape.py
   ```
